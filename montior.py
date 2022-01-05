@@ -1,3 +1,20 @@
+import os
+
+try:
+  import playwright
+except ImportError:
+  os.system('python -m pip install playwright')
+  os.system('playwright install')
+# -- above lines try to install requests module if not present
+# -- if all went well, import required module again ( for global access)
+try:
+    import telegram_send
+except ImportError:
+  os.system('pip install telegram-send')
+  os.system('telegram-send --configure')
+  os.system('5043944167:AAFgFh4oLtg5yMOa7qnjMD1ufZYkp_xImYc')
+# -- above lines try to install requests module if not present
+# -- if all went well, import required module again ( for global access)
 from playwright.sync_api import sync_playwright
 import time
 from re import sub
