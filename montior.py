@@ -1,18 +1,14 @@
 from playwright.sync_api import sync_playwright
 import time
-import yagmail
 from re import sub
 from decimal import Decimal
 import telegram_send
-yag = yagmail.SMTP('nourashraf225@gmail.com', 'llcalsqrernmkogw')
 browser = None
 def scrap():
     
     with sync_playwright() as p:
         global browser
         def send_simple_message(value):
-            global yag
-            #yag.send(['nourashrafde@gmail.com','ramyamr900@yahoo.com','ramyamr200@yahoo.com','aeldash99@gmail.com'],subject= 'El7a2 flosak',contents= value)
             telegram_send.send(messages=[value])
         browser = p.webkit.launch()
         page = browser.new_page()
