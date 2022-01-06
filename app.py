@@ -1,4 +1,5 @@
 import os
+import time
 
 try:
   import playwright
@@ -12,6 +13,7 @@ try:
 except ImportError:
   os.system('pip install telegram-send')
   os.system('telegram-send --configure')
+  time.sleep(1)
   os.system('5043944167:AAFgFh4oLtg5yMOa7qnjMD1ufZYkp_xImYc')
 # -- above lines try to install requests module if not present
 # -- if all went well, import required module again ( for global access)
