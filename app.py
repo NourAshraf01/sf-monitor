@@ -8,25 +8,18 @@ except ImportError:
   os.system('playwright install')
 # -- above lines try to install requests module if not present
 # -- if all went well, import required module again ( for global access)
-try:
-    import telegram_send
-except ImportError:
-  os.system('pip install telegram-send')
-  os.system('telegram-send --config user1.conf')
-# -- above lines try to install requests module if not present
-# -- if all went well, import required module again ( for global access)
+
 from playwright.sync_api import sync_playwright
 import time
 from re import sub
 from decimal import Decimal
-import telegram_send
 browser = None
 def scrap():
     
     with sync_playwright() as p:
         global browser
         def send_simple_message(value):
-            telegram_send.send(messages=[value])
+            os.system('curl -X POST "https://api.telegram.org/bot5043944167:AAFgFh4oLtg5yMOa7qnjMD1ufZYkp_xImYc/sendMessage" -d "chat_id=-770598851&text='+value+"')
         browser = p.webkit.launch()
         page = browser.new_page()
         page.goto("https://polygon.poocoin.app/tokens/0xdf9b4b57865b403e08c85568442f95c26b7896b0")
@@ -38,6 +31,7 @@ def scrap():
         startValue = None
         refreshTime = time.time()
         startTime = time.time()
+        send_simple_message('Monitoring..')
         while True:
             if time.time() - startTime >= 60:
                 refresh()
