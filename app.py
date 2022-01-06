@@ -19,7 +19,7 @@ def scrap():
     with sync_playwright() as p:
         global browser
         def send_simple_message(value):
-            os.system('curl -X POST "https://api.telegram.org/bot5043944167:AAFgFh4oLtg5yMOa7qnjMD1ufZYkp_xImYc/sendMessage" -d "chat_id=-770598851&text='+value+"')
+            os.system('curl -X POST "https://api.telegram.org/bot5043944167:AAFgFh4oLtg5yMOa7qnjMD1ufZYkp_xImYc/sendMessage" -d "chat_id=-770598851&text='+value+'"')
         browser = p.webkit.launch()
         page = browser.new_page()
         page.goto("https://polygon.poocoin.app/tokens/0xdf9b4b57865b403e08c85568442f95c26b7896b0")
